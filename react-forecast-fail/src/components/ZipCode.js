@@ -16,30 +16,21 @@ const ZipCode = (props) => {
   //   });
   // };
 
-    return (
-      <div className="container is-fullwidth">
-        <div className="field">
-          <p className="title label">Zipcode</p>
-          <div className="control">
-            <input
-              className="input"
-              onChange={props.handleZipcodeUpdate}
-              type="text"
-              value={props.zipcode}
-            />
-          </div>
-        </div>
-        <div className="field">
-          <button
-            className="button is-large is-primary"
-            onClick={props.handleZipcodeSubmit}
-            onSubmit={props.handleZipcodeSubmit}
-          >
-            Get Weather!
-          </button>
+  return (
+    <div className="column">
+      <div className="field">
+        <p className="title label">Zipcode</p>
+        <div className="control">
+          <input className="input" onChange={props.handleZipcodeUpdate} type="text" value={props.zipcode}/>
         </div>
       </div>
-    );
+      <div className="field">
+        <button className="button is-large is-primary" onClick={props.handleZipcodeSubmit} onSubmit={props.handleZipcodeSubmit}>
+          Get Weather!
+        </button>
+      </div>
+    </div>
+);
 }
 
 export default ZipCode;
