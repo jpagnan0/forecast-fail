@@ -74,19 +74,21 @@ export default class App extends Component {
     // this.setWeatherUrl(this.state.zipcode)
     return (
       <div className="container is-fullwidth">
-        <div className="colums">
-          <div className="section">
-            <ZipCode
-              zipcode={this.state.zipcode}
-              handleZipcodeUpdate={this.handleZipcodeUpdate}
-              handleZipcodeSubmit={this.handleZipcodeSubmit}
-            />
-          </div>
-          <div className="section">
-            <WeatherCard weatherByZipCode={this.state.weatherByZipCode} />
-          </div>
+
+        <div className="section">
+          <ZipCode
+            zipcode={this.state.zipcode}
+            handleZipcodeUpdate={this.handleZipcodeUpdate}
+            handleZipcodeSubmit={this.handleZipcodeSubmit}
+          />
         </div>
+        <div className="section">
+
+
+          <WeatherCard weatherByZipCode={this.state.weatherByZipCode} />
+          
         </div>
+      </div>
     );
   }
 }
