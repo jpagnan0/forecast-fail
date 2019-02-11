@@ -18,16 +18,18 @@ export default class Home extends Component {
   postApiCreateUser = (event) => {
     console.log('state', this.state.usernameInput);
     event.preventDefault()
-    // fetch(RAILSAPI, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     username: event.target.value
-    //   })
-    // }).then(console.log)
+    fetch('http://localhost:3000/api/v1/users/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.usernameInput
+      })
+    }).then(console.log)
+    debugger
+      document.querySelector('#userForm').reset()
   }
 
   // componentDidMount() {
@@ -46,7 +48,7 @@ export default class Home extends Component {
     return (
       <div>
         <div>Home</div>
-        <form onSubmit={this.postApiCreateUser}>
+        <form id="userForm" onSubmit={this.postApiCreateUser}>
           <label htmlFor="username">User Name: </label>
           <input onChange={this.handleChangeUsername} id="usernameInput" type="text" name="name"/>
           <input type="submit" value="Log In"/>
