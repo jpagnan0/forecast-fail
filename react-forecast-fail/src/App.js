@@ -24,6 +24,12 @@ export default class App extends Component {
       weatherByZipCode: {}
     };
   }
+  // save state of the current user
+  // fetch a list of all the users.
+  // set the current user to the user that was logged in.
+  // you will get this user
+
+
 
   handleZipcodeSubmit = e => {
     e.preventDefault();

@@ -11,14 +11,14 @@ export default class Home extends Component {
 
     this.state = {
       usernameInput: "",
-      listOfusers: []
+      currentUser: null
     };
   }
 
   postApiCreateUser = event => {
     console.log("state", this.state.usernameInput);
     event.preventDefault();
-    fetch("http://localhost:4000/api/v1/users/", {
+    fetch(`http://localhost:9000/api/v1/users/${this.state.usernameInput}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,14 +27,17 @@ export default class Home extends Component {
       body: JSON.stringify({
         username: this.state.usernameInput
       })
-    }).then(console.log);
+    }).then(res => res.json())
+    .then(response => {
+      console.log(response)
+      this.setState({
+        currentUser: response.username || null
+      },() => console.log(this.state))
+      // console.log('Error:', response)
+    })
     // debugger
     document.querySelector("#userForm").reset();
   };
-
-  // componentDidMount() {
-  //   this.postFetchUserApi()
-  // }
 
   handleChangeUsername = e => {
     // console.log(e.target.value);
@@ -44,6 +47,7 @@ export default class Home extends Component {
   };
 
   render() {
+    console.log('whats up');
     return (
       <section className="hero is-primary is-fullheight">
         <div className="hero-body">
@@ -53,6 +57,9 @@ export default class Home extends Component {
                 <div className="column is-6-tablet is-12-desktop is-12-widescreen">
                   <form className="box" id="userForm" onSubmit={this.postApiCreateUser}>
                     <div className="field">
+                    <h1>Forecast Fail</h1>
+                    <h2>The Weather App that is always wrong because the weather forecast is always wrong.</h2>
+                    <h4>Only as reliable as your next promise</h4>
                       <label htmlFor="username">User Name: </label>
                       <input
                         className="input"

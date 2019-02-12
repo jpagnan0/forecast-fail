@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, :location, only: [:index, :create]
+      post 'users/:name', to: 'users#loggedin'
     end
   end
 
