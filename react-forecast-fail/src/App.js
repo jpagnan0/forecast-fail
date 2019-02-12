@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import Home from './components/Home'
 import ZipCode from "./components/ZipCode";
 import WeatherCard from "./components/WeatherCard";
+import Home from "./components/Home";
 
 const OpenWeatherMapHelper = require("openweathermap-node");
 
@@ -73,7 +74,7 @@ export default class App extends Component {
     // console.log(this.state.url)
     // this.setWeatherUrl(this.state.zipcode)
     return (
-      <div className="container is-fullwidth">
+      <div className="container is-fullwidth"
 
         <div className="section">
           <ZipCode

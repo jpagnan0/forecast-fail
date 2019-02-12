@@ -5,9 +5,11 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.6.0
 
-* System dependencies
+* System dependencies:
+  The following application is built with a Ruby on Rails back end and a React Front end.
+  This application was developed by Adam Saland & Matt Doering.
 
 * Configuration
 
@@ -20,5 +22,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
