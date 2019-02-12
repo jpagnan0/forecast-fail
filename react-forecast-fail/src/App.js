@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import {BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom';
 // import Home from './components/Home'
 import ZipCode from "./components/ZipCode";
 import WeatherCard from "./components/WeatherCard";
@@ -9,14 +9,11 @@ const OpenWeatherMapHelper = require("openweathermap-node");
 
 let APIKEY = "ed4d2c1099d8312f09709e182a9f0e3d";
 //
-// //http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
+// http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
 //
 // let URL = `https://api.openweathermap.org/data/2.5/`;
 //const DEFAULT_QUERY = `10128`;
-const helper = new OpenWeatherMapHelper({
-  APPID: APIKEY,
-  units: "imperial"
-});
+const helper = new OpenWeatherMapHelper({ APPID: APIKEY, units: "imperial" });
 
 export default class App extends Component {
   constructor(props) {
@@ -33,21 +30,15 @@ export default class App extends Component {
     // this.props.handleZipcodeSubmit(this.state.zipcode);
     let weatherData = this.setWeatherQuery(this.state.zipcode);
 
-    this.setState({
-      zipcode: ""
-    });
+    this.setState({ zipcode: "" });
     console.log(this.state);
   };
 
   handleZipcodeUpdate = e => {
     // e.preventDefault()
     let zip = e.target.value;
-    this.setState({
-      zipcode: zip
-    });
+    this.setState({ zipcode: zip });
   };
-
-
 
   componentDidMount() {
     this.setWeatherQuery = q => {
@@ -56,7 +47,9 @@ export default class App extends Component {
           console.log(err);
         } else {
           this.setState({
-            weatherByZipCode: { ...weatherByZipCode }
+            weatherByZipCode: {
+              ...weatherByZipCode
+            }
           });
         }
       });
@@ -74,22 +67,42 @@ export default class App extends Component {
     // console.log(this.state.url)
     // this.setWeatherUrl(this.state.zipcode)
     return (
-      <div className="container is-fullwidth"
+      //   <div className="App">
+      //
 
-        <div className="section">
-          <ZipCode
-            zipcode={this.state.zipcode}
-            handleZipcodeUpdate={this.handleZipcodeUpdate}
-            handleZipcodeSubmit={this.handleZipcodeSubmit}
-          />
+      //
+      //   </div>
+      // </Router>
+      //
+      <Router>
+        <div className="container is-fullwidth">
+          <nav className="navbar-menu">
+            <NavLink exact to="/" className="nav-link" activeClassName="selected">
+              Home
+            </NavLink>
+            <NavLink exact to="/search" className="nav-link" activeClassName="selected">
+              Search
+            </NavLink>
+          </nav>
+          <Route exact path="/" render={() => <Home />} />
+          <section className="section">
+            <Route
+              exact
+              path="/search"
+              render={() => (
+                <ZipCode
+                  zipcode={this.state.zipcode}
+                  handleZipcodeUpdate={this.handleZipcodeUpdate}
+                  handleZipcodeSubmit={this.handleZipcodeSubmit}
+                />
+              )}
+            />
+          </section>
+          <section className="section">
+            <WeatherCard weatherByZipCode={this.state.weatherByZipCode} />
+          </section>
         </div>
-        <div className="section">
-
-
-          <WeatherCard weatherByZipCode={this.state.weatherByZipCode} />
-
-        </div>
-      </div>
+      </Router>
     );
   }
 }
