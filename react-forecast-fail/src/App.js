@@ -74,8 +74,8 @@ export default class App extends Component {
     // console.log(this.state.url)
     // this.setWeatherUrl(this.state.zipcode)
     return (
-      <div className="container is-fullwidth"
-
+      <div className="container is-fullwidth">
+        
         <div className="section">
           <ZipCode
             zipcode={this.state.zipcode}
