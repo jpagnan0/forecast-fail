@@ -12,7 +12,7 @@ let APIKEY = "ed4d2c1099d8312f09709e182a9f0e3d";
 // //http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
 //
 // let URL = `https://api.openweathermap.org/data/2.5/`;
-const DEFAULT_QUERY = `10128`;
+//const DEFAULT_QUERY = `10128`;
 const helper = new OpenWeatherMapHelper({
   APPID: APIKEY,
   units: "imperial"
@@ -74,23 +74,22 @@ export default class App extends Component {
     // console.log(this.state.url)
     // this.setWeatherUrl(this.state.zipcode)
     return (
-      <div className="container is-fullwidth">
-        <div className="colums">
-          <div className="section">
-          <Home />
-          </div>
-          <div className="section">
-            <ZipCode
-              zipcode={this.state.zipcode}
-              handleZipcodeUpdate={this.handleZipcodeUpdate}
-              handleZipcodeSubmit={this.handleZipcodeSubmit}
-            />
-          </div>
-          <div className="section">
-            <WeatherCard weatherByZipCode={this.state.weatherByZipCode} />
-          </div>
+      <div className="container is-fullwidth"
+
+        <div className="section">
+          <ZipCode
+            zipcode={this.state.zipcode}
+            handleZipcodeUpdate={this.handleZipcodeUpdate}
+            handleZipcodeSubmit={this.handleZipcodeSubmit}
+          />
         </div>
+        <div className="section">
+
+
+          <WeatherCard weatherByZipCode={this.state.weatherByZipCode} />
+
         </div>
+      </div>
     );
   }
 }
