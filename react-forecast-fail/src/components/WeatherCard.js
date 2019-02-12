@@ -17,6 +17,8 @@ const setWeatherIcon = (icon) => {
       return (<img className="image is-128x128" src={cloudy} alt="" />);
     case "01n":
       return (<img className="image is-128x128" src={sunny} alt="" />);
+    case "13d":
+      return (<img className="image is-128x128" src={snowy} alt="" />);
     default:
       return ""
   }
