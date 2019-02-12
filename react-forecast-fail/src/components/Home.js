@@ -28,7 +28,7 @@ export default class Home extends Component {
         username: this.state.usernameInput
       })
     }).then(console.log)
-    debugger
+    // debugger
       document.querySelector('#userForm').reset()
   }
 
