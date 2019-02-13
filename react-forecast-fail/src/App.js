@@ -82,6 +82,7 @@ export default class App extends Component {
       //
       <Router>
         <div className="container is-fullwidth">
+        <h1>heyyyyy</h1>
           <nav className="navbar-menu">
             <NavLink exact to="/" className="nav-link" activeClassName="selected">
               Home

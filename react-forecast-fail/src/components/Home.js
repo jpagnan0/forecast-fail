@@ -15,29 +15,29 @@ export default class Home extends Component {
     };
   }
 
-  postApiCreateUser = event => {
-    console.log("state", this.state.usernameInput);
-    event.preventDefault();
-    fetch(`http://localhost:9000/api/v1/users/${this.state.usernameInput}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        username: this.state.usernameInput
-      })
-    }).then(res => res.json())
-    .then(response => {
-      console.log(response)
-      this.setState({
-        currentUser: response.username || null
-      },() => console.log(this.state))
-      // console.log('Error:', response)
-    })
-    // debugger
-    document.querySelector("#userForm").reset();
-  };
+  // postApiCreateUser = event => {
+  //   console.log("state", this.state.usernameInput);
+  //   event.preventDefault();
+  //   fetch(`http://localhost:9000/api/v1/users/${this.state.usernameInput}`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       username: this.state.usernameInput
+  //     })
+  //   }).then(res => res.json())
+  //   .then(response => {
+  //     console.log(response)
+  //     this.setState({
+  //       currentUser: response.username || null
+  //     },() => console.log(this.state))
+  //     // console.log('Error:', response)
+  //   })
+  //   // debugger
+  //   document.querySelector("#userForm").reset();
+  // };
 
   handleChangeUsername = e => {
     // console.log(e.target.value);
@@ -47,7 +47,7 @@ export default class Home extends Component {
   };
 
   render() {
-    console.log('whats up');
+    console.log('asldflksjdf');
     return (
       <section className="hero is-primary is-fullheight">
         <div className="hero-body">
@@ -55,9 +55,9 @@ export default class Home extends Component {
             <div className="columns is-centered">
               <div className="column">
                 <div className="column is-6-tablet is-12-desktop is-12-widescreen">
+                <h1>Forecast Fail</h1>
                   <form className="box" id="userForm" onSubmit={this.postApiCreateUser}>
                     <div className="field">
-                    <h1>Forecast Fail</h1>
                     <h2>The Weather App that is always wrong because the weather forecast is always wrong.</h2>
                     <h4>Only as reliable as your next promise</h4>
                       <label htmlFor="username">User Name: </label>
